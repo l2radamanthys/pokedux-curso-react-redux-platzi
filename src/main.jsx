@@ -10,11 +10,11 @@ import {
   legacy_createStore as createStore,
 } from "redux";
 import { loggerMiddleware } from "./middleware/index.js";
+import { thunk } from "redux-thunk";
 
-const composedEnhacers = compose(
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(loggerMiddleware)
-);
+const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const composedEnhacers = composeAlt(applyMiddleware(thunk, loggerMiddleware));
 
 const store = createStore(pokemonsReducer, composedEnhacers);
 createRoot(document.getElementById("root")).render(

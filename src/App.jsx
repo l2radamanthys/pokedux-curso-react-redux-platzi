@@ -4,8 +4,8 @@ import { Col } from "antd";
 import { PokemonList } from "./components/PokemonList";
 import logo from "./assets/logo.svg";
 import "./App.css";
-import { getPokemons, getPokemonDetail } from "./api";
-import { setPokemons } from "./actions";
+import { getPokemons } from "./api";
+import { getPokemonWithDetail } from "./actions";
 import { useDispatch, useSelector } from "react-redux";
 
 function App() {
@@ -15,10 +15,7 @@ function App() {
   React.useEffect(() => {
     const fetchPokemons = async () => {
       const pokemonsResponse = await getPokemons();
-      const pokemonsDetailed = await Promise.all(
-        pokemonsResponse.map((pokemon) => getPokemonDetail(pokemon))
-      );
-      dispatch(setPokemons(pokemonsDetailed));
+      dispatch(getPokemonWithDetail(pokemonsResponse));
     };
     fetchPokemons();
   }, []);
