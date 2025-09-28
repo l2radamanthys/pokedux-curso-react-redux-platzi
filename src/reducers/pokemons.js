@@ -27,5 +27,7 @@ export const pokemonsReducer = (state = initialState, action) => {
         );
       }
     }
+    default:
+      return state;
   }
 };

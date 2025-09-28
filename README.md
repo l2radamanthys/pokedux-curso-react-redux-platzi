@@ -2,7 +2,7 @@
 
 Practica del curso de React y Redux de Platzi.
 
-![Pokedux](./screenshoot.png)
+![](./screenshoot.png)
 
 ## Instalación
 
