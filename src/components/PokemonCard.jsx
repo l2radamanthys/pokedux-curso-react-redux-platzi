@@ -7,16 +7,16 @@ import { setFavorite } from "../actions";
 
 const PokemonCard = ({ pokemonId, order, name, image, types, isFavorite }) => {
   const dispatch = useDispatch();
+  const title = `${order} ${capitalize(name)}`;
   const typesString = types.join(", ");
 
   const handleOnFavorite = () => {
-    console.log("click");
     dispatch(setFavorite({ pokemonId }));
   };
 
   return (
     <Card
-      title={`${order} ${name}`}
+      title={title}
       cover={<img draggable={false} alt={name} src={image} />}
       extra={<StarButton isFavorite={isFavorite} onClick={handleOnFavorite} />}
     >
@@ -24,5 +24,10 @@ const PokemonCard = ({ pokemonId, order, name, image, types, isFavorite }) => {
     </Card>
   );
 };
+
+function capitalize(str) {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
 
 export { PokemonCard };
