@@ -7,8 +7,8 @@ import { setFavorite } from "../actions";
 
 const PokemonCard = ({ pokemonId, order, name, image, types, isFavorite }) => {
   const dispatch = useDispatch();
-  const title = `${order} ${capitalize(name)}`;
-  const typesString = types.join(", ");
+  const title = `${order} - ${capitalize(name)}`;
+  const typesString = types.map((type) => capitalize(type)).join(", ");
 
   const handleOnFavorite = () => {
     dispatch(setFavorite({ pokemonId }));
