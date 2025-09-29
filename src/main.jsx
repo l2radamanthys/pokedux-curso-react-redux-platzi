@@ -12,10 +12,11 @@ import { loggerMiddleware } from "./middleware/index.js";
 import { thunk } from "redux-thunk";
 import { rootReducer } from "./reducers/rootReducer.js";
 
+const root = createRoot(document.getElementById("root"));
 const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const composedEnhacers = composeAlt(applyMiddleware(thunk, loggerMiddleware));
 const store = createStore(rootReducer, composedEnhacers);
-createRoot(document.getElementById("root")).render(
+root.render(
   <StrictMode>
     <Provider store={store}>
       <App />

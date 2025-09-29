@@ -8,6 +8,7 @@ const PokemonList = ({ pokemons = Array(10).fill("") }) => {
       {pokemons.map((pokemon) => {
         return (
           <PokemonCard
+            key={pokemon.id}
             order={pokemon.order}
             pokemonId={pokemon.id}
             name={pokemon.name}
